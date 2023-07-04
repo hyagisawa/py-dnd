@@ -7,8 +7,8 @@ class MyApp(TkinterDnD.Tk):
         super().__init__()
 
         ## ウィンドウサイズ
-        width = 300
-        height = 300
+        width = 260
+        height = 260
         self.geometry(f'{width}x{height}')
         self.minsize(width, height)
         self.maxsize(width, height)
@@ -34,11 +34,11 @@ class frameDragAndDrop(tk.LabelFrame):
         self.canvas.pack(expand=True,fill=tk.BOTH)
         
         # 画像パス
-        self.photo_image = ImageTk.PhotoImage(file = "./resource/dnd.png")
+        self.photo_image = ImageTk.PhotoImage(file = "./resource/kaiju.png")
       
        
         # 画像の描画
-        self.canvas.create_image(145, 145, image=self.photo_image)
+        self.canvas.create_image(128, 128, image=self.photo_image)
         
         ## ドラッグアンドドロップ
         self.canvas.drop_target_register(DND_FILES)
