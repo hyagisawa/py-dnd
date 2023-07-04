@@ -3,6 +3,16 @@ import tkinter as tk
 from PIL import ImageTk
 from tkinterdnd2 import DND_FILES, TkinterDnD
 
+import sys
+import os
+import subprocess
+
+
+def resource_path(relative_path):
+    if hasattr(sys, '_MEIPASS'):
+        return os.path.join(sys._MEIPASS, relative_path)
+    return os.path.join(os.path.abspath("."), relative_path)
+
 
 class MyApp(TkinterDnD.Tk):
     def __init__(self):
@@ -36,7 +46,7 @@ class frameDragAndDrop(tk.LabelFrame):
         self.canvas.pack(expand=True,fill=tk.BOTH)
         
         # 画像パス
-        self.photo_image = ImageTk.PhotoImage(file = "./resource/kaiju.png")
+        self.photo_image = ImageTk.PhotoImage(file = resource_path("./resource/kaiju.png"))
       
        
         # 画像の描画
@@ -50,6 +60,7 @@ class frameDragAndDrop(tk.LabelFrame):
     def funcDragAndDrop(self, e):
 
         image_list = self.canvas.tk.splitlist(e.data)
+        print(image_list)
 
 
 if __name__ == "__main__":

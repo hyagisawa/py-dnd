@@ -1,2 +1,3 @@
 .vscode/
-bin/
+bin/cwebp.exe
+bin/convert.exe
