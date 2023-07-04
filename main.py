@@ -1,6 +1,8 @@
 import tkinter as tk
+
 from PIL import ImageTk
 from tkinterdnd2 import DND_FILES, TkinterDnD
+
 
 class MyApp(TkinterDnD.Tk):
     def __init__(self):
@@ -47,8 +49,9 @@ class frameDragAndDrop(tk.LabelFrame):
 
     def funcDragAndDrop(self, e):
         ## ここを編集してください
+ 
         message = '\n' + e.data
-        print(message)
+        print(self.canvas.tk.splitlist(e.data))
 
 
 if __name__ == "__main__":
