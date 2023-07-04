@@ -48,10 +48,8 @@ class frameDragAndDrop(tk.LabelFrame):
 
 
     def funcDragAndDrop(self, e):
-        ## ここを編集してください
- 
-        message = '\n' + e.data
-        print(self.canvas.tk.splitlist(e.data))
+
+        image_list = self.canvas.tk.splitlist(e.data)
 
 
 if __name__ == "__main__":
