@@ -1,3 +1,5 @@
 .vscode/
+dist/*
+build/
 bin/cwebp.exe
 bin/convert.exe

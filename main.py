@@ -1,12 +1,11 @@
+import mimetypes
+import os
+import subprocess
+import sys
 import tkinter as tk
 
 from PIL import ImageTk
 from tkinterdnd2 import DND_FILES, TkinterDnD
-
-import sys
-import os
-import subprocess
-
 
 def resource_path(relative_path):
     if hasattr(sys, '_MEIPASS'):
@@ -24,7 +23,7 @@ class MyApp(TkinterDnD.Tk):
         self.geometry(f'{width}x{height}')
         self.minsize(width, height)
         self.maxsize(width, height)
-        self.title(f'DnD')
+        self.title(f'convert webp')
        
         # ## フレーム
         self.frame_drag_drop = frameDragAndDrop(self)
@@ -46,8 +45,7 @@ class frameDragAndDrop(tk.LabelFrame):
         self.canvas.pack(expand=True,fill=tk.BOTH)
         
         # 画像パス
-        self.photo_image = ImageTk.PhotoImage(file = resource_path("./resource/kaiju.png"))
-      
+        self.photo_image = ImageTk.PhotoImage(file=resource_path("./resource/dnd.png"))
        
         # 画像の描画
         self.canvas.create_image(128, 128, image=self.photo_image)
@@ -60,9 +58,17 @@ class frameDragAndDrop(tk.LabelFrame):
     def funcDragAndDrop(self, e):
 
         image_list = self.canvas.tk.splitlist(e.data)
-        print(image_list)
+
+        for im in image_list:
+            if 'image' in mimetypes.guess_type(im)[0]:
+                dirname=os.path.dirname(im)
+                basename=os.path.splitext(os.path.basename(im))[0]
+                command=[bin_file, im, '-metadata', 'icc', '-o', f'{dirname}/{basename}.webp']
+                subprocess.run(command)
+        
 
 
 if __name__ == "__main__":
+    bin_file = f'{os.path.dirname(__file__)}/resource/cwebp.exe'
     app = MyApp()
     app.mainloop()
