@@ -4,7 +4,8 @@ import subprocess
 import sys
 import tkinter as tk
 
-from PIL import ImageTk
+
+# from PIL import ImageTk
 from tkinterdnd2 import DND_FILES, TkinterDnD
 
 def resource_path(relative_path):
@@ -45,10 +46,10 @@ class frameDragAndDrop(tk.LabelFrame):
         self.canvas.pack(expand=True,fill=tk.BOTH)
         
         # 画像パス
-        self.photo_image = ImageTk.PhotoImage(file=resource_path("./resource/dnd.png"))
+        # self.photo_image = ImageTk.PhotoImage(file=resource_path("./resource/dnd.png"))
        
         # 画像の描画
-        self.canvas.create_image(128, 128, image=self.photo_image)
+        # self.canvas.create_image(128, 128, image=self.photo_image)
         
         ## ドラッグアンドドロップ
         self.canvas.drop_target_register(DND_FILES)

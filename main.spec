@@ -3,7 +3,8 @@ from PyInstaller.utils.hooks import collect_data_files
 
 datas = [('tkinterdnd2\\tkdnd\\win64*', '.')]
 datas += collect_data_files('tkinterdnd2')
-
+datas +=[('resource\\cwebp.exe','.')]
+datas +=[('resource\\dnd.png','DATA')]
 
 block_cipher = None
 
@@ -13,7 +14,7 @@ a = Analysis(
     pathex=[],
     binaries=[],
     datas=datas,
-    hiddenimports=['PIL',],
+    hiddenimports=['PIL'],
     hookspath=[],
     hooksconfig={},
     runtime_hooks=[],
